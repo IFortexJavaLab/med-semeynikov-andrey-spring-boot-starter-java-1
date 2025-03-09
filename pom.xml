@@ -11,9 +11,9 @@
     </parent>
 
     <groupId>com.ifortex.internship</groupId>
-    <artifactId>med-starter</artifactId>
+    <artifactId>med-spring-boot-starter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>med-starter</name>
+    <name>med-spring-boot-starter</name>
     <packaging>jar</packaging>
 
     <properties>
