@@ -25,6 +25,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <med-starter.version>0.0.1-SNAPSHOT</med-starter.version>
         <lombok.version>1.18.36</lombok.version>
+        <jjwt.version>0.12.6</jjwt.version>
     </properties>
 
     <dependencyManagement>
