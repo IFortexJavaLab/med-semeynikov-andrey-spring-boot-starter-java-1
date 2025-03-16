@@ -1,6 +1,6 @@
-package com.ifortex.internship.medstarter.model;
+package com.ifortex.internship.medstarter.model.kafka;
 
-import com.ifortex.internship.medstarter.model.constant.KycEventType;
+import com.ifortex.internship.medstarter.model.kafka.constant.KycEventType;
 
 import java.time.Instant;
 import java.util.UUID;
