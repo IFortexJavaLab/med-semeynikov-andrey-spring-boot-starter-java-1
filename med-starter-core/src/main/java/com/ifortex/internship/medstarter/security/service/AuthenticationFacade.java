@@ -21,6 +21,11 @@ public class AuthenticationFacade {
         return principle.getEmail();
     }
 
+    public String getUserFirstNameFromAuthentication() {
+        UserDetailsImpl principle = validateAuthenticatedUser();
+        return principle.getFirstName();
+    }
+
     public UUID getAccountIdFromAuthentication() {
         UserDetailsImpl principle = validateAuthenticatedUser();
         return principle.getAccountId();

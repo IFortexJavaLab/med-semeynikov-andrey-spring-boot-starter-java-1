@@ -22,6 +22,7 @@ import java.util.Optional;
 import javax.crypto.SecretKey;
 
 import static com.ifortex.internship.medstarter.security.model.constant.JwtConstants.CLAIM_ACCOUNT_ID;
+import static com.ifortex.internship.medstarter.security.model.constant.JwtConstants.CLAIM_FIRST_NAME;
 import static com.ifortex.internship.medstarter.security.model.constant.JwtConstants.CLAIM_ROLE;
 import static com.ifortex.internship.medstarter.security.model.constant.JwtConstants.CLAIM_SUBSCRIPTION_END_DATE;
 import static com.ifortex.internship.medstarter.security.model.constant.JwtConstants.HAS_ACTIVE_SUBSCRIPTION_CLAIM;
@@ -66,6 +67,15 @@ public class JwtTokenValidator {
             .parseSignedClaims(token)
             .getPayload()
             .getSubject();
+    }
+
+    public String getFirstNameFromToken(String token) {
+        return Jwts.parser()
+            .verifyWith(getSigningKey())
+            .build()
+            .parseSignedClaims(token)
+            .getPayload()
+            .get(CLAIM_FIRST_NAME, String.class);
     }
 
     public String getUserIdFromToken(String token) {

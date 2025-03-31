@@ -28,7 +28,7 @@ import java.util.UUID;
 public class AuthTokenFilter extends OncePerRequestFilter {
 
     public static final String AUTHORIZATION = "Authorization";
-    public static final String BEARER_ = "Bearer ";
+    public static final String BEARER = "Bearer ";
     private static final int BEARER_PREFIX_LENGTH = 7;
 
     private final JwtTokenValidator jwtTokenValidator;
@@ -74,6 +74,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         log.debug("Authentication user started");
 
         String username = jwtTokenValidator.getUsernameFromToken(jwt);
+        String firstName = jwtTokenValidator.getFirstNameFromToken(jwt);
         UUID userId = UUID.fromString(jwtTokenValidator.getUserIdFromToken(jwt));
         Boolean hasActiveSubscription = jwtTokenValidator.hasActiveSubscriptionFromToken(jwt);
         Boolean isSuperAdmin = jwtTokenValidator.isSuperAdmin(jwt);
@@ -83,6 +84,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         UserDetailsImpl userDetails =
             UserDetailsImpl.builder()
                 .email(username)
+                .firstName(firstName)
                 .accountId(userId)
                 .hasActiveSubscription(hasActiveSubscription)
                 .authorities(authorities)
@@ -103,7 +105,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     private String parseJwt(HttpServletRequest request) {
 
         String headerAuth = request.getHeader(AUTHORIZATION);
-        return headerAuth != null && headerAuth.startsWith(BEARER_)
+        return headerAuth != null && headerAuth.startsWith(BEARER)
             ? headerAuth.substring(BEARER_PREFIX_LENGTH)
             : null;
     }

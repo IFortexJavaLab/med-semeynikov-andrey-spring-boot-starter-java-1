@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.CONFLICT)
-public class EmailAlreadyRegistered extends MedServiceException {
-    public EmailAlreadyRegistered(String message) {
+public class DuplicateResourceException extends MedServiceException {
+    public DuplicateResourceException(String message) {
         super(message);
     }
 }
