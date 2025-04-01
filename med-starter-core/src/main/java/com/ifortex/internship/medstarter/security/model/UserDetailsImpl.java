@@ -1,9 +1,13 @@
 package com.ifortex.internship.medstarter.security.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,19 +17,23 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserDetailsImpl implements UserDetails {
 
-    private UUID accountId;
-    private String email;
-    @JsonIgnore private String password;
-    private boolean isTwoFactorEnabled;
-    private boolean hasActiveSubscription;
-    private LocalDateTime subscriptionEndDate;
+    UUID accountId;
+    String email;
+    String firstName;
+    @JsonIgnore String password;
+    boolean isTwoFactorEnabled;
+    boolean hasActiveSubscription;
+    LocalDateTime subscriptionEndDate;
 
-    private Boolean isSuperAdmin;
+    Boolean isSuperAdmin;
 
-    private Collection<? extends GrantedAuthority> authorities;
+    Collection<? extends GrantedAuthority> authorities;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

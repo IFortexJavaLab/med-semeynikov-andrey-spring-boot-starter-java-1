@@ -3,6 +3,7 @@ package com.ifortex.internship.medstarter.security.model.constant;
 public final class JwtConstants {
 
     public static final String CLAIM_ACCOUNT_ID = "accountId";
+    public static final String CLAIM_FIRST_NAME = "firstName";
     public static final String HAS_ACTIVE_SUBSCRIPTION_CLAIM = "hasActiveSubscription";
     public static final String IS_SUPER_ADMIN_CLAIM = "isSuperAdmin";
     public static final String CLAIM_SUBSCRIPTION_END_DATE = "subscriptionEndDate";
