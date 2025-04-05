@@ -2,6 +2,7 @@ package com.ifortex.internship.medstarter.security;
 
 import com.ifortex.internship.medstarter.security.filter.AuthEntryPointJwt;
 import com.ifortex.internship.medstarter.security.filter.CustomAccessDeniedHandler;
+import com.ifortex.internship.medstarter.security.filter.RoleSecurityExpression;
 import com.ifortex.internship.medstarter.security.filter.SubscriptionSecurityExpression;
 import com.ifortex.internship.medstarter.security.service.AuthenticationFacade;
 import com.ifortex.internship.medstarter.security.service.JwtTokenValidator;
@@ -33,6 +34,11 @@ public class SecurityAutoConfiguration {
     @Bean(name = "subscriptionSecurity")
     public SubscriptionSecurityExpression subscriptionSecurityExpression() {
         return new SubscriptionSecurityExpression();
+    }
+
+    @Bean(name = "roleSecurity")
+    public RoleSecurityExpression roleSecurityExpression() {
+        return new RoleSecurityExpression();
     }
 
     @Bean
